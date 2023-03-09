@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
+const cors = require('cors');
 // const multer = require("multer");
 const userRoute = require("./routes/users");
 
@@ -19,6 +20,7 @@ mongoose.connect(
 
 app.use(express.json());
 app.use(morgan("common"));
+app.use(cors());
 
 app.use("/api/users", userRoute);
 
