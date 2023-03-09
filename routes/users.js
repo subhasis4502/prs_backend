@@ -3,6 +3,7 @@ const router = require("express").Router();
 
 //get all user
 router.get("/", async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://prs-app-frontend.onrender.com');
   try {
     const users = await User.find();
     res.status(200).json(users);
@@ -13,6 +14,7 @@ router.get("/", async (req, res) => {
 
 //Register
 router.post("/register", async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://prs-app-frontend.onrender.com');
   try {
     const newUser = new User({
       name: req.body.name,
@@ -30,6 +32,7 @@ router.post("/register", async (req, res) => {
 
 //Delete user
 router.delete("/:id", async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://prs-app-frontend.onrender.com');
   try {
     const user = await User.findByIdAndDelete(req.params.id);
     res.status(200).json("User has been deleted");
@@ -40,6 +43,7 @@ router.delete("/:id", async (req, res) => {
 
 // Update Score
 router.post("/:id", async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://prs-app-frontend.onrender.com');
   try {
     const oldUser = await User.findById(req.params.id);
     const newScore = oldUser.score + req.body.val;
