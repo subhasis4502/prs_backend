@@ -16,6 +16,10 @@ const UserSchema = new mongoose.Schema(
       type: Number,
       require: true,
     },
+    category: {
+      type: String,
+      require: true,
+    }
   },
   { timestamps: true }
 );
