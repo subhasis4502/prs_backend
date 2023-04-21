@@ -16,6 +16,7 @@ router.post("/register", async (req, res) => {
   try {
     const newUser = new User({
       name: req.body.name,
+      desc: req.body.desc,
       profilePicture: req.body.dp,
       category: req.body.category,
       score: req.body.score,
@@ -32,7 +33,7 @@ router.post("/register", async (req, res) => {
 //Delete user
 router.delete("/:id", async (req, res) => {
   try {
-    const user = await User.findByIdAndDelete(req.params.id);
+    await User.findByIdAndDelete(req.params.id);
     res.status(200).json("User has been deleted");
   } catch (err) {
     return res.status(500).json(err);
@@ -52,6 +53,19 @@ router.post("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// Update category
+router.post("/update", async (req, res) => {
+  try {
+    const user = await User.findById(
+      '6382067cf746e9e9b91feb66'
+    );
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // router.post("/:id", async (req, res) => {
 //   try {
 //     const oldUser = User.findByIdAndUpdate(req.params.id, {

@@ -8,6 +8,9 @@ const UserSchema = new mongoose.Schema(
       min: 3,
       max: 20,
     },
+    desc: {
+      type: String,
+    },
     profilePicture: {
       type: String,
       default: "",
